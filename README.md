@@ -29,61 +29,17 @@
 
 ## 安裝與使用
 
-### 步驟一：在 n8n 中創建 Code 節點
+### 步驟：在 n8n 中創建 Code 節點
 
 1. 在您的 n8n 工作流程中添加一個 **Code** 節點
 2. 將 `markdown-to-line-converter.js` 的內容複製到 Code 節點中
 3. 確保 Code 節點設定為 **JavaScript** 模式
-
-### 步驟二：設定輸入資料
-
-確保前一個節點的輸出包含以下任一欄位：
-- `markdown`
-- `content` 
-- `text`
-- `output`
-
-### 步驟三：連接到 LINE Bot
-
-將 Code 節點的輸出連接到 LINE Bot 發送訊息的節點，輸出格式為：
-
-```json
-{
-  "output": {
-    "type": "flex",
-    "altText": "AI 回應",
-    "contents": {
-      "type": "bubble",
-      "size": "giga",
-      "body": {
-        // LINE Flex Message 內容
-      }
-    }
-  }
-}
-```
-
-## 技術特色
 
 ### LINE Flex Message 優化
 - 使用 `giga` 尺寸提供最寬的訊息顯示空間
 - 所有文字元件都支援自動換行 (`wrap: true`)
 - 適當的間距和內邊距設定
 
-### 智慧格式處理
-- 自動檢測內容長度，超過 3000 字元時降級為簡單文字格式
-- 完整的 Markdown 語法支援
-- 錯誤處理機制
-
-### 視覺設計
-- 粗體文字使用深藍色 (`#1e3a8a`) 突出顯示
-- 清單項目使用灰色 (`#555555`) 區分層次
-- 連結使用標準藍色 (`#0066cc`) 並加上底線
-
 ## 授權
 
 本專案採用 MIT 授權條款。
-
-## 貢獻
-
-歡迎提交 Issue 和 Pull Request 來改善這個專案！
